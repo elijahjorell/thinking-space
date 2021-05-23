@@ -1,1 +1,5 @@
-const elements = [];
+const state = {
+  items: [],
+  origin: undefined,
+  viewport: undefined
+};
