@@ -1,5 +1,6 @@
 const state = {
   items: [],
   origin: undefined,
-  viewport: undefined
+  viewport: undefined,
+  cursor: undefined
 };
