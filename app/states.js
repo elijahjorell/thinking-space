@@ -1,8 +1,16 @@
 const states = {
-  origin: {x: 0, y: 0},
-  scale: 1,
   cursor: {x: 0, y: 0},
+  origin: {x: 0, y: 0},
   pan: {active: false},
+  pendingRect: {
+    active: false,
+    x: undefined,
+    y: undefined,
+    w: undefined,
+    h: undefined
+  },
+  rects: [],
+  scale: 1,
   selectArea: {
     active: false,
     coordinates: {
