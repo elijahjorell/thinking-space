@@ -4,5 +4,6 @@ function create(x, y, w, h) {
     y: y,
     w: w,
     h: h,
+    depth: states.rects.length
   });
 }

@@ -5,13 +5,9 @@ function setup() {
 function draw() {
   background(30, 30, 30);
 
-
   fill(255);
   noStroke();
   text(states.scale, 8, 20);
-  text(states.pendingRect.active, 10, 10);
-
-  // if (states.scale)
 
   //
   translate(states.origin.x, states.origin.y);
@@ -25,13 +21,8 @@ function draw() {
   selectAreaDuring();
 
   //
-  // noFill();
-  fill('#29271dff');
-  stroke('#ffd70a');
-  rect(100, 100, 100, 100);
-
-  drawPendingRect();
   drawRects();
+  drawPendingRect();
   drawSelectArea();
 }
 

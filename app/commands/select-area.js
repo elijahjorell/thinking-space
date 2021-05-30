@@ -1,5 +1,6 @@
 function selectAreaBegin() {
   states.selectArea.active = true;
+  states.pendingRect.active = false;
   states.selectArea.coordinates.origin.x = states.cursor.x;
   states.selectArea.coordinates.origin.y = states.cursor.y;
 }
