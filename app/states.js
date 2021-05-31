@@ -10,7 +10,7 @@ const states = {
     h: undefined
   },
   rects: [],
-  scale: 1,
+  scale: 0.01,
   selectArea: {
     active: false,
     coordinates: {

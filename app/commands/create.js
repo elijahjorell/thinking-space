@@ -4,6 +4,8 @@ function create(x, y, w, h) {
     y: y,
     w: w,
     h: h,
+    a: w * h,
     depth: states.rects.length
   });
+  states.rects = states.rects.sort((a, b) => a.a - b.a);
 }

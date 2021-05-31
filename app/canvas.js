@@ -29,6 +29,7 @@ function draw() {
 function drawSelectArea() {
   if (states.selectArea.active) {
     stroke(255);
+    strokeWeight(1/states.scale);
     fill(255, 120);
     rect(
         states.selectArea.coordinates.topLeftCorner.x,
@@ -42,6 +43,7 @@ function drawSelectArea() {
 function drawPendingRect() {
   if (states.pendingRect.active) {
     stroke(100, 100, 100);
+    strokeWeight(1/states.scale);
     noFill();
     rect(
         states.pendingRect.x,
@@ -54,8 +56,13 @@ function drawPendingRect() {
 
 function drawRects() {
   states.rects.map((currentRect) => {
-    fill('#29271dff');
+    if (currentRect.h * states.scale > 0.3 * windowHeight || currentRect.w * states.scale > 0.3 * windowWidth) {
+      noFill();
+    } else {
+      fill('#29271dff');
+    }
     stroke('#ffd70a');
+    strokeWeight(1/states.scale);
     rect(currentRect.x, currentRect.y, currentRect.w, currentRect.h);
   });
 }
