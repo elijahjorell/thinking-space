@@ -21,7 +21,7 @@ function keyPressed() {
     editEnd();
   }
 
-  if (!states.edit.active) {
+  // if (!states.edit.active) {
     if (keyCode === UP_ARROW) {
       moveStart();
     } else if (keyCode === DOWN_ARROW) {
@@ -31,5 +31,5 @@ function keyPressed() {
     } else if (keyCode === RIGHT_ARROW) {
       moveStart();
     }
-  }
+  // }
 }

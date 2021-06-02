@@ -78,7 +78,12 @@ function loadTextArea() {
   states.edit.textArea.style('background-color', 'rgba(0, 0, 0, 0)');
   states.edit.textArea.style('color', 'white');
   document.getElementById('editor').addEventListener('keypress', (e) => {
-    if (e.keyCode === 13) {
+    if (keyCode === 13) {
+      e.preventDefault();
+    }
+  });
+  document.getElementById('editor').addEventListener('keydown', (e) => {
+    if ([37, 38, 39 , 40].indexOf(e.keyCode) > -1 ) {
       e.preventDefault();
     }
   });
