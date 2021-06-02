@@ -27,5 +27,13 @@ const states = {
       w: undefined,
       h: undefined
     }
+  },
+  move: {
+    active: false,
+    speed: 10
+  },
+  edit: {
+    active: false,
+    textArea: undefined
   }
 };

@@ -1,5 +1,7 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  loadTextArea();
 }
 
 function draw() {
@@ -17,6 +19,7 @@ function draw() {
   cursorTranslate();
 
   //
+  moveDuring();
   panDuring();
   selectAreaDuring();
 
@@ -64,5 +67,19 @@ function drawRects() {
     stroke('#ffd70a');
     strokeWeight(1/states.scale);
     rect(currentRect.x, currentRect.y, currentRect.w, currentRect.h);
+  });
+}
+
+function loadTextArea() {
+  states.edit.textArea = createElement('textarea');
+  states.edit.textArea.id('editor');
+  states.edit.textArea.size(300, 150);
+  states.edit.textArea.position(windowWidth/2 - 150, windowHeight/2 - 75);
+  states.edit.textArea.style('background-color', 'rgba(0, 0, 0, 0)');
+  states.edit.textArea.style('color', 'white');
+  document.getElementById('editor').addEventListener('keypress', (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
   });
 }
