@@ -34,6 +34,10 @@ const states = {
   },
   edit: {
     active: false,
-    textArea: undefined
+    textArea: undefined,
+    w: 300,
+    h: 150,
+    x: undefined,
+    y: undefined
   }
 };

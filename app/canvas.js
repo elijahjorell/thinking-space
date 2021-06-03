@@ -73,10 +73,13 @@ function drawRects() {
 function loadTextArea() {
   states.edit.textArea = createElement('textarea');
   states.edit.textArea.id('editor');
-  states.edit.textArea.size(300, 150);
-  states.edit.textArea.position(windowWidth/2 - 150, windowHeight/2 - 75);
+  states.edit.textArea.size(states.edit.w, states.edit.h);
+  states.edit.x = windowWidth/2 - states.edit.w/2;
+  states.edit.y = windowHeight/2 - states.edit.h/2;
+  states.edit.textArea.position(states.edit.x, states.edit.y);
   states.edit.textArea.style('background-color', 'rgba(0, 0, 0, 0)');
   states.edit.textArea.style('color', 'white');
+  states.edit.textArea.style('resize', 'none');
   document.getElementById('editor').addEventListener('keypress', (e) => {
     if (keyCode === 13) {
       e.preventDefault();
@@ -87,4 +90,5 @@ function loadTextArea() {
       e.preventDefault();
     }
   });
+  states.edit.textArea.style('visibility', 'hidden');
 }

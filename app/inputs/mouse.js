@@ -19,8 +19,9 @@ function mouseWheel(event) {
 }
 
 function cursorTranslate() {
-  states.cursor.x = (mouseX - states.origin.x) / states.scale;
-  states.cursor.y = (mouseY - states.origin.y) / states.scale;
+  let cursorTranslated = translateCoordinate(mouseX, mouseY)
+  states.cursor.x = cursorTranslated.x;
+  states.cursor.y = cursorTranslated.y;
 }
 
 document.addEventListener('mousedown', (e) => {
