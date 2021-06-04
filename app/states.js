@@ -30,7 +30,7 @@ const states = {
   },
   move: {
     active: false,
-    speed: 10
+    speed: 20
   },
   edit: {
     active: false,

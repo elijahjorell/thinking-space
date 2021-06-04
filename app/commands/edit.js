@@ -10,6 +10,7 @@ function editDuring() {
 
 function editEnd() {
   document.getElementById('editor').blur();
+  states.edit.textArea.elt.value = "";
   states.edit.active = false;
   states.edit.textArea.style('visibility', 'hidden');
 }

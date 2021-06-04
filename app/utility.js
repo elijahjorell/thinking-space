@@ -4,3 +4,4 @@ function translateCoordinate(x, y) {
     y: (y - states.origin.y) / states.scale
   }
 }
+

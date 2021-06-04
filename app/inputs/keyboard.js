@@ -12,12 +12,14 @@ function keyPressed() {
       if (states.edit.active) {
         let editorCoordinate = translateCoordinate(states.edit.x, states.edit.y);
 
-        create(
-            editorCoordinate.x,
-            editorCoordinate.y,
-            states.edit.w / states.scale,
-            states.edit.h / states.scale
-        );
+        if (states.edit.textArea.elt.value !== "") {
+          create(
+              editorCoordinate.x,
+              editorCoordinate.y,
+              states.edit.w / states.scale,
+              states.edit.h / states.scale
+          );
+        }
         editEnd();
       } else {
         editStart();
@@ -30,9 +32,13 @@ function keyPressed() {
   }
 
   if (keyCode === UP_ARROW) {
-    moveStart();
+    if (!keyIsDown(CONTROL)) {
+      moveStart();
+    }
   } else if (keyCode === DOWN_ARROW) {
-    moveStart();
+    if (!keyIsDown(CONTROL)) {
+      moveStart();
+    }
   } else if (keyCode === LEFT_ARROW) {
     moveStart();
   } else if (keyCode === RIGHT_ARROW) {

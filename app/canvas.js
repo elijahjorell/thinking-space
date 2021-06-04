@@ -22,6 +22,7 @@ function draw() {
   moveDuring();
   panDuring();
   selectAreaDuring();
+  arrowZoomDuring();
 
   //
   drawRects();
