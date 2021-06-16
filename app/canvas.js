@@ -9,6 +9,7 @@ function draw() {
 
   fill(255);
   noStroke();
+  textSize(15);
   text(states.scale, 8, 20);
 
   //
@@ -68,6 +69,23 @@ function drawRects() {
     stroke('#ffd70a');
     strokeWeight(1/states.scale);
     rect(currentRect.x, currentRect.y, currentRect.w, currentRect.h);
+
+    noFill();
+    fill('#ffd70a');
+    textSize(currentRect.size);
+    if (currentRect.h * states.scale > 0.3 * windowHeight || currentRect.w * states.scale > 0.3 * windowWidth) {
+      text(
+          currentRect.text,
+          currentRect.x,
+          currentRect.y - currentRect.h * 0.025
+      );
+    } else {
+      text(
+          currentRect.text,
+          currentRect.x + currentRect.w / 2 - textWidth(currentRect.text) / 2,
+          currentRect.y + currentRect.h / 2
+      );
+    }
   });
 }
 
@@ -83,6 +101,11 @@ function loadTextArea() {
   states.edit.textArea.style('resize', 'none');
   document.getElementById('editor').addEventListener('keypress', (e) => {
     if (keyCode === 13) {
+      e.preventDefault();
+    }
+  });
+  document.getElementById('editor').addEventListener('keypress', (e) => {
+    if (keyCode === 32) {
       e.preventDefault();
     }
   });

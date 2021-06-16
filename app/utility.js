@@ -5,3 +5,11 @@ function translateCoordinate(x, y) {
   }
 }
 
+function getIndexOfRectWithId(id) {
+  let i;
+  for (i = 0; i < states.rects.length; i++) {
+    if (id === states.rects[i].id) {
+      return i;
+    }
+  }
+}

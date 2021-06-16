@@ -1,25 +1,16 @@
 function keyPressed() {
-  if (keyCode === ENTER) {
+  if (keyCode === ENTER || keyCode === 32) {
     if (states.pendingRect.active === true) {
       create(
           states.pendingRect.x,
           states.pendingRect.y,
           states.pendingRect.w,
-          states.pendingRect.h
+          states.pendingRect.h,
+          ""
       );
       states.pendingRect.active = false;
     } else {
       if (states.edit.active) {
-        let editorCoordinate = translateCoordinate(states.edit.x, states.edit.y);
-
-        if (states.edit.textArea.elt.value !== "") {
-          create(
-              editorCoordinate.x,
-              editorCoordinate.y,
-              states.edit.w / states.scale,
-              states.edit.h / states.scale
-          );
-        }
         editEnd();
       } else {
         editStart();
@@ -43,11 +34,27 @@ function keyPressed() {
     moveStart();
   } else if (keyCode === RIGHT_ARROW) {
     moveStart();
+  } else if (keyCode === 87) {
+    if (!states.edit.active) {
+      moveStart();
+    }
+  } else if (keyCode === 83) {
+    if (!states.edit.active) {
+      moveStart();
+    }
+  } else if (keyCode === 65) {
+    if (!states.edit.active) {
+      moveStart();
+    }
+  } else if (keyCode === 68) {
+    if (!states.edit.active) {
+      moveStart();
+    }
   }
 }
 
-function keyTyped() {
-  if (!states.edit.active && keyCode !== ENTER) {
-    editStart();
-  }
-}
+// function keyTyped() {
+//   if (!states.edit.active && keyCode !== ENTER) {
+//     editStart();
+//   }
+// }

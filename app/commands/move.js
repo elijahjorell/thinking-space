@@ -9,19 +9,23 @@ function moveDuring() {
     if (!keyIsDown(UP_ARROW) &&
         !keyIsDown(DOWN_ARROW) &&
         !keyIsDown(LEFT_ARROW) &&
-        !keyIsDown(RIGHT_ARROW)) {
+        !keyIsDown(RIGHT_ARROW) &&
+        !keyIsDown(87) &&
+        !keyIsDown(83) &&
+        !keyIsDown(65) &&
+        !keyIsDown(68)) {
       moveEnd();
     } else {
-      if (keyIsDown(UP_ARROW)) {
+      if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
         states.origin.y += states.move.speed;
       }
-      if (keyIsDown(DOWN_ARROW)) {
+      if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
         states.origin.y -= states.move.speed;
       }
-      if (keyIsDown(LEFT_ARROW)) {
+      if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
         states.origin.x += states.move.speed;
       }
-      if (keyIsDown(RIGHT_ARROW)) {
+      if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
         states.origin.x -= states.move.speed;
       }
     }
