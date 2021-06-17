@@ -11,6 +11,9 @@ function draw() {
   noStroke();
   textSize(15);
   text(states.scale, 8, 20);
+  text(-round(states.origin.x) + ", " + round(states.origin.y), 8, 35);
+
+  circle(windowWidth / 2, windowHeight / 2, 10);
 
   //
   translate(states.origin.x, states.origin.y);
@@ -23,6 +26,7 @@ function draw() {
   moveDuring();
   panDuring();
   selectAreaDuring();
+  editDuring();
   arrowZoomDuring();
 
   //
