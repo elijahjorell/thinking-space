@@ -4,6 +4,9 @@ class Hud {
   }
 
   render() {
-    
+    fill(255);
+    noStroke();
+    text(this.space.viewport.scale, 10, 20);
+    text(-round(this.space.viewport.origin.x) + ", " + round(this.space.viewport.origin.y), 10, 35);
   }
 }
