@@ -2,7 +2,7 @@ class Viewport {
   constructor(space) {
     this.space = space;
     this.origin = {x: 0, y: 0};
-    this.scale = 1;
+    this.scale = 0.01;
     this.activePanning = false;
     this.activeMoving = false;
     this.factorPan = 0.9;
