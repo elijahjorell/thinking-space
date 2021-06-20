@@ -19,6 +19,7 @@ class Editor {
     this.textarea.style('visibility', 'visible');
     this.textarea.elt.focus();
     this.textarea.elt.select();
+    console.log(this)
   }
 
   update() {
@@ -50,17 +51,19 @@ class Editor {
 
   updateSize() {
     textSize(this.fontSize);
-    this.textarea.size(textWidth(this.text), textAscent() * 0.8);
+    this.dimensions.w = textWidth(this.text);
+    this.dimensions.h = textAscent();
+    this.textarea.size(this.dimensions.w, this.dimensions.h);
   }
 
   updatePosition() {
     const untranslatedCoordinate = this.space.viewport.untranslateCoordinate(
-        this.editedRect.topLeftCorner.x,
-        this.editedRect.topLeftCorner.y
+        (this.editedRect.corners.tl.x + this.editedRect.corners.tr.x) / 2 ,
+        (this.editedRect.corners.tl.y + this.editedRect.corners.bl.y) / 2
     );
     this.textarea.position(
-        untranslatedCoordinate.x,
-        untranslatedCoordinate.y
+        untranslatedCoordinate.x - this.dimensions.w / 2,
+        untranslatedCoordinate.y - this.dimensions.h / 2
     );
   }
 
@@ -74,6 +77,7 @@ class Editor {
     this.textarea.style('overflow', 'hidden');
     this.textarea.style('padding', '0');
     this.textarea.style('margin', '0');
+    this.textarea.style('font-family', 'sans-serif');
     document.getElementById('editor').addEventListener('keypress', (e) => {
       if (e.keyCode === 13) {
         e.preventDefault();
