@@ -62,10 +62,16 @@ class Viewport {
   }
 
   translateCoordinate(x, y) {
-    return{
+    return {
       x: (x - this.origin.x) / this.scale,
       y: (y - this.origin.y) / this.scale
-    }
+    };
   }
 
+  untranslateCoordinate(x, y) {
+    return {
+      x: this.scale * x + this.origin.x,
+      y: this.scale * y + this.origin.y
+    };
+  }
 }

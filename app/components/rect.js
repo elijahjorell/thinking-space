@@ -7,6 +7,7 @@ class Rect {
     this.area = w * h;
     this.corners = getCornersOfRect(x, y, w, h);
     this.text = text;
+    this.fontSize = 15 / this.space.viewport.scale;
     this.opaque = true;
   }
 
@@ -15,6 +16,11 @@ class Rect {
   }
 
   render() {
+    this.renderRect();
+    this.renderText();
+  }
+
+  renderRect() {
     if (this.opaque) {
       fill('#29271dff');
     } else {
@@ -28,6 +34,25 @@ class Rect {
         this.dimensions.w,
         this.dimensions.h
     );
+  }
+
+  renderText() {
+    noFill();
+    fill('#ffd70a');
+    textSize(this.fontSize * 1.2);
+    if (this.dimensions.h * this.space.viewport.scale > 0.3 * windowHeight || this.dimensions.w * this.space.viewport.scale > 0.3 * windowWidth) {
+      text(
+          this.text,
+          this.topLeftCorner.x,
+          this.topLeftCorner.y - this.dimensions.h * 0.025
+      );
+    } else {
+      text(
+          this.text,
+          this.topLeftCorner.x + this.dimensions.w / 2 - textWidth(this.text) / 2,
+          this.topLeftCorner.y + this.dimensions.h / 2
+      );
+    }
   }
 
   updateOpaque() {
