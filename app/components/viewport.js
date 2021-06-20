@@ -3,27 +3,37 @@ class Viewport {
     this.space = space;
     this.origin = {x: 0, y: 0};
     this.scale = 1;
-    this.panning = false;
-    this.moving = false;
+    this.activePanning = false;
+    this.activeMoving = false;
+    this.factorPan = 0.9;
+    this.factorZoom = 0.9;
   }
 
-  panStart() {
-
+  update() {
+    this.updatePan();
+    this.updateMove();
   }
 
-  panDuring() {
+  startPan() {
+    this.activePanning = true;
+  }
 
+  updatePan() {
+    if (this.activePanning) {
+      this.origin.x -= this.factorPan * (pmouseX - mouseX);
+      this.origin.y -= this.factorPan * (pmouseY - mouseY);
+    }
   }
 
   panEnd() {
+    this.activePanning = false;
+  }
+
+  startMove() {
 
   }
 
-  moveStart() {
-
-  }
-
-  moveDuring() {
+  updateMove() {
 
   }
 
@@ -31,12 +41,24 @@ class Viewport {
 
   }
 
-  zoomIn() {
-
+  zoom(event) {
+    if (event.deltaY > 0) {
+      this.zoomOut(this.space.cursor.coordinate);
+    } else if (event.deltaY < 0) {
+      this.zoomIn(this.space.cursor.coordinate);
+    }
   }
 
-  zoomOut() {
+  zoomIn(coordinate) {
+    this.scale /= this.factorZoom;
+    this.origin.x += coordinate.x * this.scale * (this.factorZoom - 1);
+    this.origin.y += coordinate.y * this.scale * (this.factorZoom - 1);
+  }
 
+  zoomOut(coordinate) {
+    this.origin.x -= coordinate.x * this.scale * (this.factorZoom - 1);
+    this.origin.y -= coordinate.y * this.scale * (this.factorZoom - 1);
+    this.scale *= this.factorZoom;
   }
 
   translateCoordinate(x, y) {

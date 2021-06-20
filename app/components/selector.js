@@ -9,42 +9,46 @@ class Selector {
     this.dimensions = {w: 0, h: 0};
   }
 
-  areaStart(x, y) {
+  update() {
+    this.updateArea();
+  }
+
+  render() {
+    strokeWeight(1/this.space.viewport.scale);
+    if (this.activeArea) {
+      fill(255, 120);
+      stroke(255);
+      rect(this.topLeftCorner.x, this.topLeftCorner.y, this.dimensions.w, this.dimensions.h);
+    } else if (this.activeAreaLinger) {
+      noFill();
+      stroke(100, 100, 100);
+      rect(this.topLeftCorner.x, this.topLeftCorner.y, this.dimensions.w, this.dimensions.h);
+    }
+  }
+
+  startArea(x, y) {
     this.activeArea = true;
     this.origin.x = x;
     this.origin.y = y;
   }
 
-  areaDuring() {
+  updateArea() {
     if (this.activeArea) {
       this.updateBounds();
     }
   }
 
-  areaEnd() {
+  endArea() {
     this.activeArea = false;
-    this.areaLingerStart();
+    this.startAreaLinger();
   }
 
-  areaLingerStart() {
+  startAreaLinger() {
     this.activeAreaLinger = true;
   }
 
-  areaLingerEnd() {
+  endAreaLinger() {
     this.activeAreaLinger = false;
-  }
-
-  render() {
-      strokeWeight(1/this.space.viewport.scale);
-      if (this.activeArea) {
-        fill(255, 120);
-        stroke(255);
-        rect(this.topLeftCorner.x, this.topLeftCorner.y, this.dimensions.w, this.dimensions.h);
-      } else if (this.activeAreaLinger) {
-        noFill();
-        stroke(100, 100, 100);
-        rect(this.topLeftCorner.x, this.topLeftCorner.y, this.dimensions.w, this.dimensions.h);
-      }
   }
 
   updateBounds() {

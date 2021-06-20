@@ -3,9 +3,8 @@ function draw() {
   activeSpace.hud.render();
 
   translate(activeSpace.viewport.origin.x, activeSpace.viewport.origin.y);
+  scale(activeSpace.viewport.scale);
 
-  activeSpace.cursor.updateCoordinate();
-
-  activeSpace.selector.areaDuring();
-  activeSpace.selector.render();
+  activeSpace.update();
+  activeSpace.render();
 }

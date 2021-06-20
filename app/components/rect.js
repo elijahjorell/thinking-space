@@ -1,7 +1,7 @@
 class Rect {
   constructor(space, x, y, w, h, text) {
     this.space = space;
-    this.origin = {x: x, y: y};
+    this.topLeftCorner = {x: x, y: y};
     this.dimensions = {w: w, h: h};
     this.area = w * h;
     this.corners = getCornersOfRect(x, y, w, h);
