@@ -1,6 +1,7 @@
 class Rect {
   constructor(space, x, y, w, h, text) {
     this.space = space;
+    this.id = this.space.content.length;
     this.topLeftCorner = {x: x, y: y};
     this.dimensions = {w: w, h: h};
     this.area = w * h;
