@@ -1,8 +1,8 @@
 function mousePressed() {
   switch (mouseButton) {
     case LEFT:
-      activeSpace.selector.endAreaLinger();
-      activeSpace.selector.startArea(activeSpace.cursor.coordinate.x, activeSpace.cursor.coordinate.y);
+      activeSpace.highlighter.endLinger();
+      activeSpace.highlighter.start(activeSpace.cursor.coordinate.x, activeSpace.cursor.coordinate.y);
       break;
     case CENTER:
       activeSpace.viewport.startPan();
@@ -13,7 +13,7 @@ function mousePressed() {
 function mouseReleased() {
   switch (mouseButton) {
     case LEFT:
-      activeSpace.selector.endArea();
+      activeSpace.highlighter.end();
       break;
     case CENTER:
       activeSpace.viewport.panEnd();

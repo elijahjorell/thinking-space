@@ -1,18 +1,18 @@
 function keyPressed() {
   switch (keyCode) {
     case ESCAPE:
-      activeSpace.selector.endAreaLinger();
+      activeSpace.highlighter.endLinger();
       activeSpace.editor.end();
       break;
     case ENTER:
       if (activeSpace.editor.active) {
         activeSpace.editor.end();
-      } else if (activeSpace.selector.activeAreaLinger) {
+      } else if (activeSpace.highlighter.activeLinger) {
         activeSpace.content.createRect(
-            activeSpace.selector.topLeftCorner.x,
-            activeSpace.selector.topLeftCorner.y,
-            activeSpace.selector.dimensions.w,
-            activeSpace.selector.dimensions.h,
+            activeSpace.highlighter.topLeftCorner.x,
+            activeSpace.highlighter.topLeftCorner.y,
+            activeSpace.highlighter.dimensions.w,
+            activeSpace.highlighter.dimensions.h,
             ""
         );
       }
