@@ -4,6 +4,8 @@ class Cursor {
     this.coordinate = {x: 0, y: 0};
     this.style = 'default';
     this.detectedRects = [];
+    this.topRect = undefined;
+
   }
 
   update() {
@@ -20,10 +22,18 @@ class Cursor {
     let detectedRects = [];
     this.space.content.rects.map((currentRect) => {
       if (checkCoordinateWithinCorners(this.coordinate, currentRect.corners) && currentRect.opaque) {
-        detectedRects.push(currentRect.id);
+        detectedRects.push(currentRect);
       }
-    })
+    });
     this.detectedRects = detectedRects;
+
+    this.topRect = detectedRects.reduce((topRect, currentRect) => {
+      if (topRect === undefined ||
+          currentRect.area > topRect.area) {
+        topRect = currentRect;
+      }
+      return topRect;
+    }, undefined);
   }
 
   updateStyle() {

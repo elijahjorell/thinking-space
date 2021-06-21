@@ -5,4 +5,3 @@ function setup() {
   canvas.parent('app');
   activeSpace.setup();
 }
-

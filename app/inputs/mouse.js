@@ -1,14 +1,10 @@
 function mousePressed() {
   switch (mouseButton) {
     case LEFT:
-      activeSpace.highlighter.endLinger();
-      activeSpace.highlighter.start(activeSpace.cursor.coordinate.x, activeSpace.cursor.coordinate.y);
-      if (activeSpace.selector.active) {
-        activeSpace.selector.end();
-      }
+      activeSpace.actions.mouseMappings.leftClick();
       break;
     case CENTER:
-      activeSpace.viewport.startPan();
+      activeSpace.actions.mouseMappings.centerClick();
       break;
   }
 }

@@ -7,10 +7,12 @@ class Space {
     this.selector = new Selector(this);
     this.editor = new Editor(this);
     this.content = new Content(this);
+    this.actions = new Actions(this);
   }
 
   setup() {
     this.editor.setup();
+    this.actions.setup();
   }
 
   update() {
@@ -19,6 +21,7 @@ class Space {
     this.highlighter.update();
     this.content.update();
     this.editor.update();
+    this.actions.update();
   }
 
   render() {

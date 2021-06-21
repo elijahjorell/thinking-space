@@ -11,10 +11,14 @@ class Rect {
     this.opaque = true;
     this.highlighted = false;
     this.selected = false;
+    this.grabbed = false;
   }
 
   update() {
     this.updateOpaque();
+    if (this.grabbed) {
+      this.updateCorners();
+    }
   }
 
   render() {
@@ -77,5 +81,9 @@ class Rect {
     } else {
       this.opaque = true;
     }
+  }
+
+  updateCorners() {
+    this.corners = getCornersOfRect(this.topLeftCorner.x, this.topLeftCorner.y, w, h);
   }
 }
