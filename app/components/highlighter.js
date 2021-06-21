@@ -1,12 +1,13 @@
 class Highlighter {
   constructor(space) {
     this.space = space;
-
     this.active = false;
     this.activeLinger = false;
     this.origin = {x: 0, y: 0};
     this.topLeftCorner = {x: 0, y: 0};
+    this.corners = {tl: 0, tr: 0, bl: 0, br: 0};
     this.dimensions = {w: 0, h: 0};
+    this.detectedRects = [];
   }
 
   start(x, y) {
@@ -18,10 +19,14 @@ class Highlighter {
   update() {
     if (this.active) {
       this.updateBounds();
+      this.updateDetectedRects();
     }
   }
 
   end() {
+    this.detectedRects.forEach((currentRect) => {
+      currentRect.highlighted = false;
+    });
     this.active = false;
     this.startLinger();
   }
@@ -77,5 +82,24 @@ class Highlighter {
         this.dimensions.h = this.space.cursor.coordinate.y - this.origin.y;
       }
     }
+    this.corners = getCornersOfRect(
+        this.topLeftCorner.x,
+        this.topLeftCorner.y,
+        this.dimensions.w,
+        this.dimensions.h
+    );
+  }
+
+  updateDetectedRects() {
+    this.detectedRects = [];
+    this.space.content.rects.forEach((currentRect) => {
+      const coordinates = Object.values(currentRect.corners);
+      if (checkAllCoordinatesWithinCorners(coordinates, this.corners)) {
+        this.detectedRects.push(currentRect);
+        currentRect.highlighted = true;
+      } else {
+        currentRect.highlighted = false;
+      }
+    })
   }
 }

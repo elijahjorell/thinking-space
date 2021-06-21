@@ -16,14 +16,13 @@ class Space {
   update() {
     this.cursor.update();
     this.viewport.update();
-    this.selector.update();
     this.highlighter.update();
     this.content.update();
     this.editor.update();
   }
 
   render() {
-    this.highlighter.render();
     this.content.render();
+    this.highlighter.render();
   }
 }

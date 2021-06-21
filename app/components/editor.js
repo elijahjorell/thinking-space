@@ -19,7 +19,6 @@ class Editor {
     this.textarea.style('visibility', 'visible');
     this.textarea.elt.focus();
     this.textarea.elt.select();
-    console.log(this)
   }
 
   update() {

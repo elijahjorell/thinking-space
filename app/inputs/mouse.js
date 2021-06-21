@@ -3,6 +3,9 @@ function mousePressed() {
     case LEFT:
       activeSpace.highlighter.endLinger();
       activeSpace.highlighter.start(activeSpace.cursor.coordinate.x, activeSpace.cursor.coordinate.y);
+      if (activeSpace.selector.active) {
+        activeSpace.selector.end();
+      }
       break;
     case CENTER:
       activeSpace.viewport.startPan();
@@ -13,6 +16,9 @@ function mousePressed() {
 function mouseReleased() {
   switch (mouseButton) {
     case LEFT:
+      if (activeSpace.highlighter.detectedRects.length > 0) {
+        activeSpace.selector.start(activeSpace.highlighter.detectedRects);
+      }
       activeSpace.highlighter.end();
       break;
     case CENTER:

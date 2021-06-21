@@ -9,6 +9,8 @@ class Rect {
     this.text = text;
     this.fontSize = 15 / this.space.viewport.scale;
     this.opaque = true;
+    this.highlighted = false;
+    this.selected = false;
   }
 
   update() {
@@ -21,12 +23,21 @@ class Rect {
   }
 
   renderRect() {
-    if (this.opaque) {
-      fill('#29271dff');
+    if (this.selected || this.highlighted) {
+      if (this.opaque) {
+        fill('grey');
+      } else {
+        noFill();
+      }
+      stroke('white');
     } else {
-      noFill();
+      if (this.opaque) {
+        fill('#29271dff');
+      } else {
+        noFill();
+      }
+      stroke('#ffd70a');
     }
-    stroke('#ffd70a');
     strokeWeight(1/this.space.viewport.scale);
     rect(
         this.topLeftCorner.x,
@@ -37,8 +48,12 @@ class Rect {
   }
 
   renderText() {
-    noFill();
-    fill('#ffd70a');
+    if (this.selected || this.highlighted) {
+      fill('white');
+    } else {
+      fill('#ffd70a');
+    }
+    noStroke();
     textSize(this.fontSize * 1.2);
     if (this.dimensions.h * this.space.viewport.scale > 0.3 * windowHeight || this.dimensions.w * this.space.viewport.scale > 0.3 * windowWidth) {
       text(
@@ -63,5 +78,4 @@ class Rect {
       this.opaque = true;
     }
   }
-
 }

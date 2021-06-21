@@ -7,17 +7,18 @@ class Selector {
   }
 
   start(rects) {
-    this.active = true;
     this.selectedRects = rects;
+    this.selectedRects.forEach((currentRect) => {
+      currentRect.selected = true;
+    });
+    this.active = true;
   }
 
   end() {
-    this.active = false;
+    this.selectedRects.forEach((currentRect) => {
+      currentRect.selected = false;
+    });
     this.selectedRects = [];
+    this.active = false;
   }
-
-  update() {
-
-  }
-
 }

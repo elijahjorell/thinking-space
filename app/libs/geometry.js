@@ -16,3 +16,12 @@ function checkCoordinateWithinCorners(coordinate, corners) {
   }
   return false;
 }
+
+function checkAllCoordinatesWithinCorners(coordinates, corners) {
+  for (let i = 0; i < coordinates.length; i++) {
+    if (!checkCoordinateWithinCorners(coordinates[i], corners)) {
+      return false;
+    }
+  }
+  return true
+}

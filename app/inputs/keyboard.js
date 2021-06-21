@@ -1,6 +1,7 @@
 function keyPressed() {
   switch (keyCode) {
     case ESCAPE:
+      activeSpace.selector.end();
       activeSpace.highlighter.endLinger();
       activeSpace.editor.end();
       break;
