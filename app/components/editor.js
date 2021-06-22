@@ -56,14 +56,25 @@ class Editor {
   }
 
   updatePosition() {
-    const untranslatedCoordinate = this.space.viewport.untranslateCoordinate(
-        (this.editedRect.corners.tl.x + this.editedRect.corners.tr.x) / 2 ,
-        (this.editedRect.corners.tl.y + this.editedRect.corners.bl.y) / 2
-    );
-    this.textarea.position(
-        untranslatedCoordinate.x - this.dimensions.w / 2,
-        untranslatedCoordinate.y - this.dimensions.h / 2
-    );
+    if (this.editedRect.opaque) {
+      const untranslatedCoordinate = this.space.viewport.untranslateCoordinate(
+          (this.editedRect.corners.tl.x + this.editedRect.corners.tr.x) / 2 ,
+          (this.editedRect.corners.tl.y + this.editedRect.corners.bl.y) / 2
+      );
+      this.textarea.position(
+          untranslatedCoordinate.x - this.dimensions.w / 2,
+          untranslatedCoordinate.y - this.dimensions.h / 2
+      );
+    } else {
+      const untranslatedCoordinate = this.space.viewport.untranslateCoordinate(
+          this.editedRect.topLeftCorner.x,
+          this.editedRect.topLeftCorner.y - this.editedRect.dimensions.h * 0.025
+      );
+      this.textarea.position(
+          untranslatedCoordinate.x,
+          untranslatedCoordinate.y
+      );
+    }
   }
 
   setupEditor() {

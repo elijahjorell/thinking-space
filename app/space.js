@@ -5,14 +5,13 @@ class Space {
     this.cursor = new Cursor(this);
     this.highlighter = new Highlighter(this);
     this.selector = new Selector(this);
+    this.grabber = new Grabber(this);
     this.editor = new Editor(this);
     this.content = new Content(this);
-    this.actions = new Actions(this);
   }
 
   setup() {
     this.editor.setup();
-    this.actions.setup();
   }
 
   update() {
@@ -20,8 +19,8 @@ class Space {
     this.viewport.update();
     this.highlighter.update();
     this.content.update();
+    this.grabber.update();
     this.editor.update();
-    this.actions.update();
   }
 
   render() {

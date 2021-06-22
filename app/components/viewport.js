@@ -55,7 +55,7 @@ class Viewport {
     this.origin.y += coordinate.y * this.scale * (this.factorZoom - 1);
   }
 
-  zoomOut(coordinate) {
+  zoomOut(coordinate) { // change so that it zooms out in a way that makes cursor centre?
     this.origin.x -= coordinate.x * this.scale * (this.factorZoom - 1);
     this.origin.y -= coordinate.y * this.scale * (this.factorZoom - 1);
     this.scale *= this.factorZoom;

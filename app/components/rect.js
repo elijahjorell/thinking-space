@@ -59,17 +59,17 @@ class Rect {
     }
     noStroke();
     textSize(this.fontSize * 1.2);
-    if (this.dimensions.h * this.space.viewport.scale > 0.3 * windowHeight || this.dimensions.w * this.space.viewport.scale > 0.3 * windowWidth) {
-      text(
-          this.text,
-          this.topLeftCorner.x,
-          this.topLeftCorner.y - this.dimensions.h * 0.025
-      );
-    } else {
+    if (this.opaque) {
       text(
           this.text,
           this.topLeftCorner.x + this.dimensions.w / 2 - textWidth(this.text) / 2,
           this.topLeftCorner.y + this.dimensions.h / 2
+      );
+    } else {
+      text(
+          this.text,
+          this.topLeftCorner.x,
+          this.topLeftCorner.y - this.dimensions.h * 0.025
       );
     }
   }
