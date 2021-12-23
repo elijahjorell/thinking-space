@@ -13,10 +13,10 @@ class Content {
   }
 
   update() {
-    this.rects.map(rect => rect.update());
+    this.rects.forEach(rect => rect.update());
   }
 
   render() {
-    this.rects.map(rect => rect.render());
+    this.rects.forEach(rect => rect.render());
   }
 }

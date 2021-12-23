@@ -9,5 +9,6 @@ class Hud {
     textSize(13);
     text(this.space.viewport.scale, 10, 20);
     text(-round(this.space.viewport.origin.x) + ", " + round(this.space.viewport.origin.y), 10, 35);
+    text(round(this.space.viewport.dimensions.w) + ", " + round(this.space.viewport.dimensions.h), 10, 50);
   }
 }

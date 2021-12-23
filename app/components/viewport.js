@@ -7,6 +7,7 @@ class Viewport {
     this.activeMoving = false;
     this.factorPan = 0.9;
     this.factorZoom = 0.9;
+    this.dimensions = {w: windowWidth / this.scale, h: windowHeight / this.scale};
   }
 
   update() {
@@ -41,12 +42,18 @@ class Viewport {
 
   }
 
+  updateDimensions() {
+    this.dimensions.w = windowWidth / this.scale;
+    this.dimensions.h = windowHeight / this.scale;
+  };
+
   zoom(event) {
     if (event.deltaY > 0) {
       this.zoomOut(this.space.cursor.coordinate);
     } else if (event.deltaY < 0) {
       this.zoomIn(this.space.cursor.coordinate);
     }
+    this.updateDimensions();
   }
 
   zoomIn(coordinate) {
